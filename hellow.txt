@@ -1,0 +1,23 @@
+@echo off
+   if [%1]==[] (
+   goto error
+  )
+  if [%2]==[] (
+   goto error
+  )
+  if [%3]==[] (
+   goto error
+  )
+set text_value=%1
+set output_folder=%2
+set output_file=%3
+if not exist %output_folder% (
+mkdir %output_folder%
+)
+cd %output_folder%
+rem attrib -r %output_folder%
+echo %text_value% >%output_file%.txt
+cd ..
+rem attrib +r %output_file%
+:error
+set /p x= press any key to exiit ::
